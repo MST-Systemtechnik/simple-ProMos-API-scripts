@@ -1,0 +1,13 @@
+# https://www.section.io/engineering-education/dockerized-php-apache-and-mysql-container-development-environment/
+# https://hub.docker.com/_/mysql/
+version: '3.3'
+services:
+    php-apache-environment:
+        container_name: php-apache
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        volumes:
+            - .:/var/www/html/
+        ports:
+            - 8000:80

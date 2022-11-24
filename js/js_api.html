@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>REST API Anwendung Javascript</h1>
+
+  <script src="./js_api.js"></script>
+
+  <script>
+    const HOST = "127.0.0.1"
+    const PORT = "9020"
+    const PROTOCOL = "HTTP"
+    const ENDPOINT = "json_data"
+    const WHOIS = "js_test_client"
+    const USER = ""
+  </script>
+
+  <hr>
+
+  <script>
+    body_set = {
+      "path": "Test:Datenelement",
+      "value": "Inhalt",
+      "create": true
+    };
+
+    dp_set(HOST, PORT, PROTOCOL, ENDPOINT, body_set);
+
+    function dp_set_rsp(response) {
+      let text = response;
+      const obj_set = JSON.parse(text);
+      document.getElementById("dp_set_rsp_text").innerHTML = "Erstelltes Datenelement Value: " + obj_set.set[0].value
+    }
+
+  </script>
+  <p id="dp_set_rsp_text"></p>
+  <hr>
+
+
+  <script>
+    body_get = {
+      "path": "",
+      "query": {
+        "regExPath": "^(Test).*$",
+        "maxDepth": "0"
+      }
+    }
+
+    dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, body_get);
+
+    function dp_get_rsp(response) {
+      let text = response;
+      const obj_get = JSON.parse(text);
+
+      var str_get = "";
+      for (var i = 0; i < obj_get.get.length; i++) {
+        str_get += "Path: " + obj_get.get[i].path + "<br>";
+        str_get += "Value: " + obj_get.get[i].value + "<br>";
+        str_get += "------------------------------<br>"
+      }
+
+      document.getElementById("dp_get_rsp_text").innerHTML = str_get;
+    }
+  </script>
+  <p id="dp_get_rsp_text"></p>
+  <hr>
+
+
+
+
+  <script>
+    body_rename = {
+      "path": "Test:Datenelement",
+      "newPath": "Test:Umbenannt"
+    };
+
+    dp_rename(HOST, PORT, PROTOCOL, ENDPOINT, body_rename);
+
+    function dp_rename_rsp(response) {
+      let text = response;
+      const obj_rename = JSON.parse(text);
+
+      document.getElementById("dp_rename_rsp_txt").innerHTML = "Code: " + obj_rename.rename[0].code;
+    }
+  </script>
+  <p id="dp_rename_rsp_txt"></p>
+  <hr>
+
+
+
+
+  <script>
+    body_copy = {
+      "path": "Test:Umbenannt",
+      "destPath": "Test:Kopiert"
+    };
+
+    dp_copy(HOST, PORT, PROTOCOL, ENDPOINT, body_copy);
+
+    function dp_copy_rsp(response) {
+      let text = response;
+      const obj_copy = JSON.parse(text);
+
+      document.getElementById("dp_copy_rsp_txt").innerHTML = "Neues Datenelement: " + obj_copy.copy[0].destPath;
+    }
+  </script>
+  <p id="dp_copy_rsp_txt"></p>
+  <hr>
+
+
+
+  <script>
+    body_delete = {
+      "path": "Test:Kopiert"
+    };
+
+    dp_delete(HOST, PORT, PROTOCOL, ENDPOINT, body_delete);
+
+    function dp_delete_rsp(response) {
+      let text = response;
+      const obj_delete = JSON.parse(text);
+
+      document.getElementById("dp_delete_rsp_txt").innerHTML = "Code: " + obj_delete.delete[0].code;
+    }
+  </script>
+  <p id="dp_delete_rsp_txt"></p>
+  <hr>
+
+</body>
+
+</html>

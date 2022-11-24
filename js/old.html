@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h2>Demo JavaScript</h2>
+  <script src="./js_api.js"></script>
+  <script>
+    const HOST = "127.0.0.1"
+    const PORT = "9020"
+    const PROTOCOL = "HTTP"
+    const ENDPOINT = "json_data"
+    const WHOIS = "js_test_client"
+    const USER = ""
+  </script>
+
+<table>
+  <tr>
+    <td width="120px">
+      <button id="btn_gt" onclick='dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, body_get)'>DP_GET</button>
+    </td>
+    <td>
+      <p>Path: DRV:Modbus:Register:R00002</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>Response:</p>
+    </td>
+    <td>
+      <p id="response_get">-</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>Value:</p>
+    </td>
+    <td>
+      <p id="value_get">-</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>Code:</p>
+    </td>
+    <td>
+      <p id="code_get">-</p>
+    </td>
+  </tr>
+</table>
+
+  <script>
+    body_get = [{
+      "path": "DRV:Modbus:Register:R00003"
+    },{
+      "path": "DRV:Modbus:Register:R00003"
+    }];
+
+    function dp_get_old_rsp(response) {
+      let text = response;
+      const obj_get = JSON.parse(text);
+      document.getElementById("response_get").innerHTML = JSON.stringify(obj_get);
+
+      var str_get = "";
+      for (var i=0; i<obj_get.get.length; i++) {
+        str_get += obj_get.get[i].value + "<br>";
+      }
+
+      document.getElementById("value_get").innerHTML = str_get;
+      document.getElementById("code_get").innerHTML = obj_get.get[0].code;
+    };
+  </script>
+
+
+<p id="demo2" onclick='dp_set(HOST, PORT, PROTOCOL, ENDPOINT, body_set)'>DP_SET</p>
+
+<script>
+  body_set = {
+    "path": "Test99:NewValue3",
+    "value": "abc",
+    "create": true
+  };
+
+  function dp_set_old_rsp(response) {
+    let text = response;
+    const obj_set = JSON.parse(text);
+    document.getElementById("demo2").innerHTML = obj_set.set[0].code;
+  };
+</script>
+
+
+<p id="demo3" onclick='dp_rename(HOST, PORT, PROTOCOL, ENDPOINT, body_rename)'>DP_Rename</p>
+
+<script>
+  body_rename = {
+    "path": "Test99:NewValue2",
+    "newPath": "Test99:NewValue2_1"
+  };
+
+  function dp_rename_old_rsp(response) {
+    let text = response;
+    const obj_rename = JSON.parse(text);
+    document.getElementById("demo3").innerHTML = obj_rename.rename[0].path;
+  };
+</script>
+
+
+<p id="demo4" onclick='dp_copy(HOST, PORT, PROTOCOL, ENDPOINT, body_copy)'>DP_Copy</p>
+
+<script>
+  body_copy = {
+    "path": "Test99:NewValue3",
+    "destPath": "Test99:NewValue3_1"
+  };
+
+  function dp_copy_old_rsp(response) {
+    let text = response;
+    const obj_copy = JSON.parse(text);
+    document.getElementById("demo4").innerHTML = obj_copy.copy[0].path;
+  };
+</script>
+
+
+<p id="demo5" onclick='dp_delete(HOST, PORT, PROTOCOL, ENDPOINT, body_delete)'>DP_Delete</p>
+
+<script>
+  body_delete = {
+    "path": "Test99:NewValue3",
+  };
+
+  function dp_delete_old_rsp(response) {
+    let text = response;
+    const obj_copy = JSON.parse(text);
+    document.getElementById("demo5").innerHTML = obj_copy.delete[0].path;
+  };
+</script>
+
+</body>
+
+</html>
