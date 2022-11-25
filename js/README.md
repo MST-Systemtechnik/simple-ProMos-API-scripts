@@ -202,7 +202,7 @@ function dp_rename_rsp(response) {
 
 Im Browser wird beim neuladen folgendes angezeigt:
 
-![](img/221125150448.png]
+![](img/221125150448.png)
 
 ### function dp_copy
 
