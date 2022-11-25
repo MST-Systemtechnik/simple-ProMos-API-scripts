@@ -35,7 +35,7 @@ docker-compose up
 
 Nun kann man im Browser localhost:8000 eingeben und die zu erstellende Seite index.php wird angezeigt.
 
-![](https://lh4.googleusercontent.com/Y8z34BSwe13uZ-A6iDkXQgtXkQz8PsyJYAGtuE-WjADK8GYotSxkrh4J2YJVfYH2q5StcQbP1QIQHhGaMGnQYYbK1B3u7GN3Omqiu_8xsQFU95EW2FMP3QA4O1jLTKJj5UiDnz5Dtqfuo5iW_GvvTu7ody4sJfEWeU1map_p2wSsuRzn12uer8KVXVVDrw)
+![](img/pasted%20image%200%20(1).png)
 
 ### function dp_set
 
@@ -76,7 +76,7 @@ echo "<hr>";
 
 Im Browser wird beim neuladen folgendes angezeigt:
 
-![](https://lh5.googleusercontent.com/8l6T2K_7YhNyoZ0LgQNOaHfwDJX9ohMDIxdyKA7ivodo6V44YA5_rUUxYVcz8jdgJvmA9ohsMbqnh8sHNb8QhBY1aDZ5UoF_L--n4rJx-0jy9nTOBgoS28euZFShlEA4OTKej9yfi1F4dtOEv6_3GBRq9d8dRbyjPxAmbAZqEtRq0tk9dp6AIzwWG-44Iw)
+![](img/pasted%20image%200.png)
 
 ### function dp_get
 
@@ -130,7 +130,7 @@ echo "<hr>";
 
 Im Browser wird beim neuladen folgendes angezeigt:
 
-![](https://lh6.googleusercontent.com/lKXfcTRefuw-f2XvysuenPBTr9DCtz5aLb_KUnEKvlvOp0Hhe6q1BPg4tVA2DqjdwqsvSxFxo1WAdhwKlmmtAkOw0RN38InKPYYgpN9AtTJtVm45C7SIKtcc4kxDqFwu14olP1N85J2z-aAIx7SvumApeorNQsvdX0yhaCtr397_OSHGZGEmpXG226mxjw)
+![](img/pasted%20image%200%20(2).png)
 
 ### function dp_rename
 
@@ -169,7 +169,7 @@ echo "<hr>";
 
 Im Browser wird beim neuladen folgendes angezeigt:
 
-![](https://lh5.googleusercontent.com/xEkdZst6Y2V2_eRIYGz_HIcHIWoSNeEJ7NaxFMtlX7N4zxu9MMyrS2z_xWpYgUUslzgkuPkTL-4qwvO326uBP74aZFTPqg8qj1WedXz46XMunQ1JHZipWVoskmQq9Sa6wi7yZpn0L2EUQvG9VhTy4I-EKheLWPILAs6iHPQH7eJf5DbYs2EA-6z-cjkJpg)
+![](img/pasted%20image%200%20(3).png)
 
 ### function dp_copy
 
@@ -208,7 +208,7 @@ echo "<hr>"
 
 Im Browser wird beim neuladen folgendes angezeigt:
 
-![](https://lh3.googleusercontent.com/Lul6ndLDsN6ujHLLHfR81Awtu9NKp-YVIxKQ7l6LsUgbTlpkGrEI3CkUHQ5mKrW3QJirWXJV7Ap8WvKMMZr5ApNTS9HXUl1D8IPAdf21E8xbpLQeAHsl0dDCtM53FTcz16pgRZopyS-odpnC6O4qpwVXZd0z5ieMlV56zbgdOMieKb2_gFJ3eeC9TGzFoA)
+![](img/pasted%20image%200%20(4).png)
 
 ### function dp_delete
 
@@ -246,7 +246,7 @@ echo "<hr>";
 
 Im Browser wird beim neuladen folgendes angezeigt:
 
-![](https://lh6.googleusercontent.com/KN5w0HpSGU0raQrNVbesH8d32J7sBKB34ghgDhjT1GWMURhN8QY-UbVoiOp-uyTfzmgYdxKfxBeIcaoBIeI-BBaj6G9tskRn-eLFCgnGSFFKifj5DdnD2AJX0Obz5Q7iJh2wkXqIFyJmpWJIB4Thgy6RVVWZGCGV63-bsQkUnj-ANG3BwTWjw9iEiBrutA)
+![](img/pasted%20image%200%20(5).png)
 
 ### Tipps und Tricks
 
@@ -276,4 +276,4 @@ if ($response["delete"][0]["code"] != "ok") {
 
 Wenn nun die Anfrage nicht ok ist, wird folgendes im Browser angezeigt:
 
-![](https://lh4.googleusercontent.com/CvzOSgqm_-nTLETvwZ_nCKkTnkzs-VE_0Ea2_yDsZoQl272li_yjafPW7CzKdZUI9aO18x5CzoiD-tnHYl7IQZPkuThvwrPRAJiGRnD468Xeh4fjhNWuurDUVk4Gt550wcgUQER2-pYw_g5qeHB-OB9f4DFM6CEcmBc834g2HCf4H6zaOqf1WLybXtt7xw)
+![](img/pasted%20image%200%20(6).png)
