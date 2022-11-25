@@ -369,5 +369,6 @@ if (j_delete_response2["delete"][0]["code"] != "ok") {
 Wenn nun die Anfrage nicht ok ist, kann folgende Meldung im Terminal angezeigt werden:
 
 ```shell
-
+Fehler bei der Ausfuehrung 'delete'
+"Data point doesn't exist"
 ```
