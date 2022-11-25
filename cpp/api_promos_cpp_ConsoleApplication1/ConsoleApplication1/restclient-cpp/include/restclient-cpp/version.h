@@ -1,0 +1,7 @@
+
+#ifndef INCLUDE_VERSION_H_
+#define INCLUDE_VERSION_H_
+
+#define RESTCLIENT_VERSION "V1"
+
+#endif  // INCLUDE_VERSION_H_
