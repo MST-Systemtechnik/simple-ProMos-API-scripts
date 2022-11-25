@@ -137,6 +137,7 @@
     <ClCompile Include="restclient-cpp\source\restclient.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleApplication1.h" />
     <ClInclude Include="Struct_API.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

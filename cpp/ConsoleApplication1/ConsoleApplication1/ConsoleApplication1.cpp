@@ -8,6 +8,7 @@
 using json = nlohmann::json;
 
 #include "Struct_API.h"
+#include "ConsoleApplication1.h"
 
 
 using namespace std;
@@ -15,20 +16,7 @@ using namespace std;
 
 int main()
 {
-    ns::person p = { "Ned Flanders", "744 Evergreen Terrace", 60 };
-
-    json j1;
-    j1["name"] = p.name;
-    j1["address"] = p.address;
-    j1["age"] = p.age;
-
-    ns::person p2{
-    j1["name"].get<std::string>(),
-    j1["address"].get<std::string>(),
-    j1["age"].get<int>()
-    };
-
-    std::cout << "Start restclient" << endl;
+     std::cout << "Start restclient" << endl;
 
     // initialize RestClient
     RestClient::init();
@@ -48,17 +36,18 @@ int main()
     conn->AppendHeader("Content-Type", "application/json");
 
     // Set
-    json j;
+    json j_Set;
 
-    j["whois"] = "cpp_test_client";
-    j["user"] = "";
-    j["set"] = { {
-        {"path", "Test:lululu"}, 
-        {"value", "lululululululu"}, 
-        {"create", true} 
+    j_Set["whois"] = "cpp_test_client";
+    j_Set["user"] = "";
+    j_Set["set"] = { {
+        {"path", "Test:Datenelement"}, 
+        {"value", "Inhalt"}, 
+        {"create", true},
+        {"CreateDefault", false}
     } };
 
-    string s_set = j.dump();
+    string s_set = j_Set.dump();
 
     RestClient::Response responseSet = conn->post("/json_data", s_set);   
 
@@ -67,10 +56,74 @@ int main()
     std::cout << "Body: " << responseSet.body << endl;
 
     // Get
-    RestClient::Response responseGet = conn->post("/json_data", "{\"get\": [{\"path\":\"System:Time\"}]}");
+    json j_get;
 
+    j_get["get"] = { {
+        {"path", "Test"},
+        {"query", {
+            {"regExPath", "^(Test).*$"},
+            {"maxDepth", 0}
+        }}
+    } };
+    
+    string s_get = j_get.dump();
+    std::cout << s_get << endl;
+
+    RestClient::Response responseGet = conn->post("/json_data", s_get);
+
+    
     std::cout << "Code: " << responseGet.code << endl;
     std::cout << "Body: " << responseGet.body << endl;
+
+    // Rename
+    json j_rename;
+
+    j_rename["whois"] = "cpp_test_client";
+    j_rename["rename"] = { {
+        {"path", "Test:Datenelement"},
+        {"newPath", "Test:Umbenannt"}
+    } };
+
+    string s_rename = j_rename.dump();
+    std::cout << s_rename << endl;
+
+    RestClient::Response responseRename = conn->post("/json_data", s_rename);
+
+    std::cout << "Code: " << responseRename.code << endl;
+    std::cout << "Body: " << responseRename.body << endl;
+
+    // Copy
+    json j_copy;
+
+    j_copy["whois"] = "cpp_test_client";
+    j_copy["copy"] = { {
+        {"path", "Test:Umbenannt"},
+        {"destPath", "Test:CopyName"}
+} };
+
+    string s_copy = j_copy.dump();
+    std::cout << s_copy << endl;
+
+    RestClient::Response responseCopy = conn->post("/json_data", s_copy);
+
+    std::cout << "Code: " << responseCopy.code << endl;
+    std::cout << "Body: " << responseCopy.body << endl;
+    
+    // Delete
+    json j_delete;
+
+    j_delete["whois"] = "cpp_test_client";
+    j_delete["delete"] = { {
+        {"path", "Test:CopyName"},
+    } };
+
+    string s_delete = j_delete.dump();
+    std::cout << s_delete << endl;
+
+    RestClient::Response responseDelete = conn->post("/json_data", s_delete);
+
+    std::cout << "Code: " << responseDelete.code << endl;
+    std::cout << "Body: " << responseDelete.body << endl;
 
     // deinit RestClient. After calling this you have to call RestClient::init()
     // again before you can use it

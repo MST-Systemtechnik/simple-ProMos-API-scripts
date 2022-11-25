@@ -32,5 +32,8 @@
     <ClInclude Include="Struct_API.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="ConsoleApplication1.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
