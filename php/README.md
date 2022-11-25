@@ -47,23 +47,23 @@ Den Body kann man mit einem einfachen String erstellen. Dies kann im index.php s
 
 ```php
 $body = '{"path":"Test:Datenelement", "value":"Inhalt", "create": true}';
-$return_set =  dp_set(HOST, PORT, PROTOCOL, ENDPOINT, $body);
+$return_set =  dp_set(HOST, PORT, PROTOCOL, ENDPOINT, $body);
 ```
 
 Die Rückgabe von $return_set:
 
 ```json
 {
-    "whois": "php_test_client",
-    "set": [
-        {
-            "path": "Test:Datenelement",
-            "code": "ok",
-            "type": "string",
-            "value": "Inhalt",
-            "stamp": "2022-10-07T10:20:35,419+02:00"
-        }
-    ]
+    "whois": "php_test_client",
+    "set": [
+        {
+            "path": "Test:Datenelement",
+            "code": "ok",
+            "type": "string",
+            "value": "Inhalt",
+            "stamp": "2022-10-07T10:20:35,419+02:00"
+        }
+    ]
 }
 ```
 
@@ -95,24 +95,24 @@ Die Rückgabe von $return_get:
 
 ```json
 {
-    "tag": "",
-    "get": [
-        {
-            "code": "ok",
-            "path": "Test",
-            "type": "none",
-            "value": null,
-            "stamp": null,
-            "hasChild": true
-        },
-        {
-            "code": "ok",
-            "path": "Test:Datenelement",
-            "type": "string",
-            "value": "Inhalt",
-            "stamp": "2022-10-07T10:36:59,006+02:00"
-        }
-    ]
+    "tag": "",
+    "get": [
+        {
+            "code": "ok",
+            "path": "Test",
+            "type": "none",
+            "value": null,
+            "stamp": null,
+            "hasChild": true
+        },
+        {
+            "code": "ok",
+            "path": "Test:Datenelement",
+            "type": "string",
+            "value": "Inhalt",
+            "stamp": "2022-10-07T10:36:59,006+02:00"
+        }
+    ]
 }
 ```
 
@@ -120,9 +120,9 @@ Man kann die Werte von mehreren Rückgaben ausgeben mit einem for-Iteration:
 
 ```php
 foreach ($return_get["get"] as $get) {
-    echo "Path: " . json_encode($get["path"]) . "<br>";
-    echo "Value: " . json_encode($get["value"]) . "<br>";
-    echo "------------------------------<br>";
+    echo "Path: " . json_encode($get["path"]) . "<br>";
+    echo "Value: " . json_encode($get["value"]) . "<br>";
+    echo "------------------------------<br>";
 }
 
 echo "<hr>";
@@ -149,14 +149,14 @@ Die Rückgabe von $return_rename:
 
 ```json
 {
-    "whois": "php_test_client",
-    "rename": [
-        {
-            "path": "Test:Datenelement",
-            "newPath": "Test:Umbenannt",
-            "code": "ok"
-        }
-    ]
+    "whois": "php_test_client",
+    "rename": [
+        {
+            "path": "Test:Datenelement",
+            "newPath": "Test:Umbenannt",
+            "code": "ok"
+        }
+    ]
 }
 ```
 
@@ -188,14 +188,14 @@ Die Rückgabe von $return_copy:
 
 ```json
 {
-    "whois": "php_test_client",
-    "copy": [
-        {
-            "path": "Test:Umbenannt",
-            "destPath": "Test:Kopiert",
-            "code": "ok"
-        }
-    ]
+    "whois": "php_test_client",
+    "copy": [
+        {
+            "path": "Test:Umbenannt",
+            "destPath": "Test:Kopiert",
+            "code": "ok"
+        }
+    ]
 }
 ```
 
@@ -227,13 +227,13 @@ Die Rückgabe von $return_delete:
 
 ```json
 {
-    "whois": "php_test_client",
-    "delete": [
-        {
-            "path": "Test:Kopiert",
-            "code": "ok"
-        }
-    ]
+    "whois": "php_test_client",
+    "delete": [
+        {
+            "path": "Test:Kopiert",
+            "code": "ok"
+        }
+    ]
 }
 ```
 
@@ -254,14 +254,14 @@ Wenn eine Ausführung nicht erfolgreich war, sieht man dies indem der Code nicht
 
 ```json
 {
-    "whois": "python_test_client",
-    "delete": [
-        {
-            "path": "Test:NewValue",
-            "code": "not found",
-            "message": "Data point doesn't exist"
-        }
-    ]
+    "whois": "python_test_client",
+    "delete": [
+        {
+            "path": "Test:NewValue",
+            "code": "not found",
+            "message": "Data point doesn't exist"
+        }
+    ]
 }
 ```
 
@@ -269,8 +269,8 @@ Dies kann man abfragen und anzeigen, damit man immer Feedback hat, ob die Anfrag
 
 ```php
 if ($response["delete"][0]["code"] != "ok") {
-    echo "Fehler bei der Ausführung dp_delete:<br>";
-    echo $response["delete"][0]["message"];
+    echo "Fehler bei der Ausführung dp_delete:<br>";
+    echo $response["delete"][0]["message"];
 }
 ```
 
