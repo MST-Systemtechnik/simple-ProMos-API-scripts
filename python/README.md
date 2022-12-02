@@ -2,18 +2,29 @@
 
 Python muss zuerst installiert werden. Dafür gibt es auf der Webseite [https://www.python.org/](https://www.python.org/) die entsprechenden Anleitungen und Dateien.
 
+Es müssen folgende Libarys installiert werden:
+
+
+
+```shell
+pip install requests
+pip install schema
+```
+
 Um mit dieser Anleitung eine API-Abfrage zu machen, muss man sich auf dem gleichen Netzwerk befinden, auf dem das ProMos NT läuft.
 
 Es müssen keine Änderungen gemacht werden an der Datei python_api.py.
 
 ## Vorbereitung
 
-Es muss ein Projektordner erstellt werden und in diesem müssen die Dateien python_api.py und constant.py kopiert werden und ein neues Dokument erstellt mit dem Namen main.py.
+Es muss ein Projektordner erstellt werden und in diesem müssen die Dateien python_api.py und constant.py kopiert werden.
+Im Projektordner muss eine neue Datei erstellt werden mit dem Namen main.py.
 
 In der Datei muss folgendes eingegeben werden:
 
 ```python
 from python_api import dp_copy, dp_delete, dp_get, dp_rename, dp_set
+from python_api import JsonCopy, JsonGet, JsonQuery, JsonSet, JsonDelete, JsonRename
 from constant import HOST, PORT, PROTOCOL, ENDPOINT
 ```
 
@@ -30,7 +41,7 @@ Den Body kann man mit der Klasse JsonSet erstellen. Dies kann im main.py so auss
 ```python
 setBody = JsonSet(
     path='Test:Datenelement',
-    value='Inhalt',
+    value='Inhalt',
     type='string',
     create=True,
     createDefault=False,
