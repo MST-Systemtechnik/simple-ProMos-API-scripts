@@ -4,29 +4,28 @@ Um den Verlauf im Browser anzuzeigen, muss man den Google Chrome Browser im `dis
 
 ## Vorbereitung
 
-Es muss ein Projektordner erstellt werden und in diesem müssen die Datei js_api.html kopiert werden. Erstelle ein neues Dokument mit dem Namen js_api.html.
+Es muss ein Projektordner erstellt werden und in diesem müssen die Datei js_api.js kopiert werden. Erstelle ein neues Dokument mit dem Namen js_api.html.
 
 In der Datei muss folgendes eingegeben werden:
 
 ```html
 <!DOCTYPE html>
 <html>
+  <body>
+    <h1>REST API Anwendung Javascript</h1>
 
-<body>
-<h1>REST API Anwendung Javascript</h1>
+    <script src="./js_api.js"></script>
 
-<script src="./js_api.js"></script>
-
-<script>
-    const HOST = "127.0.0.1"
-    const PORT = "9020"
-    const PROTOCOL = "HTTP"
-    const ENDPOINT = "json_data"
-	const WHOIS = "js_test_client"
-	const USER = ""
-</script>
-
-<hr>
+    <script>
+      const HOST = "127.0.0.1"
+      const PORT = "9020"
+      const PROTOCOL = "HTTP"
+      const ENDPOINT = "json_data"
+      const WHOIS = "js_test_client"
+      const USER = ""
+    </script>
+  </body>
+</html>
 ```
 
 ### function dp_set
@@ -42,9 +41,9 @@ body_set = {
   "path": "Test:Datenelement",
   "value": "Inhalt",
   "create": true
-};
+}
 
-dp_set(HOST, PORT, PROTOCOL, ENDPOINT, body_set);
+dp_set(HOST, PORT, PROTOCOL, ENDPOINT, body_set)
 ``` 
 
 Die Rückgabe von dp_set_rsp_txt:
@@ -68,8 +67,8 @@ Die einzelnen Werte der Rückgabe kann man folgendermassen anzeigen:
 
 ```js
 function dp_set_rsp(response) {
-  let text = response;
-  const obj_set = JSON.parse(text);
+  let text = response
+  const obj_set = JSON.parse(text)
   document.getElementById("dp_set_rsp_text").innerHTML = "Erstelltes Datenelement Value: " + obj_set.set[0].value
 }
 ```
@@ -99,7 +98,7 @@ body_get = {
   }
 }
 
-dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, body_get);
+dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, body_get)
 ```
 
 Die Rückgabe von dp_get_rsp_text:
@@ -131,13 +130,13 @@ Man kann die Werte von mehreren Rückgaben ausgeben mit einer for-Iteration:
 
 ```js
 function dp_get_rsp(response) {
-  let text = response;
-  const obj_get = JSON.parse(text);
+  let text = response
+  const obj_get = JSON.parse(text)
 
-  var str_get = "";
+  var str_get = ""
   for (var i = 0; i < obj_get.get.length; i++) {
-	str_get += "Path: " + obj_get.get[i].path + "<br>";
-	str_get += "Value: " + obj_get.get[i].value + "<br>";
+	str_get += "Path: " + obj_get.get[i].path + "<br>"
+	str_get += "Value: " + obj_get.get[i].value + "<br>"
 	str_get += "------------------------------<br>"
   }
 
@@ -165,9 +164,9 @@ Den Body kann man mit Json erstellen. Dies kann im js_api.html so aussehen:
 body_rename = {
   "path": "Test:Datenelement",
   "newPath": "Test:Umbenannt"
-};
+}
 
-dp_rename(HOST, PORT, PROTOCOL, ENDPOINT, body_rename);
+dp_rename(HOST, PORT, PROTOCOL, ENDPOINT, body_rename)
 ```
 
 Die Rückgabe von dp_rename_rsp_txt:
@@ -189,10 +188,10 @@ Man kann den Code auslesen um zu kontrollieren ob das Datenelement erfolgrech um
 
 ```js
 function dp_rename_rsp(response) {
-  let text = response;
-  const obj_rename = JSON.parse(text);
+  let text = response
+  const obj_rename = JSON.parse(text)
 
-  document.getElementById("dp_rename_rsp_txt").innerHTML = "Code: " + obj_rename.rename[0].code;
+  document.getElementById("dp_rename_rsp_txt").innerHTML = "Code: " + obj_rename.rename[0].code
 }
 ```
 
@@ -216,9 +215,9 @@ Den Body kann man mit Json erstellen. Dies kann im js_api.html so aussehen:
 body_copy = {
   "path": "Test:Umbenannt",
   "destPath": "Test:Kopiert"
-};
+}
 
-dp_copy(HOST, PORT, PROTOCOL, ENDPOINT, body_copy);
+dp_copy(HOST, PORT, PROTOCOL, ENDPOINT, body_copy)
 ``` 
 
 Die Rückgabe von dp_copy_rsp_txt:
@@ -240,10 +239,10 @@ Man kann den Pfad vom neuen Datenelement auslesen:
 
 ```js
 function dp_copy_rsp(response) {
-  let text = response;
-  const obj_copy = JSON.parse(text);
+  let text = response
+  const obj_copy = JSON.parse(text)
 
-  document.getElementById("dp_copy_rsp_txt").innerHTML = "Neues Datenelement: " + obj_copy.copy[0].destPath;
+  document.getElementById("dp_copy_rsp_txt").innerHTML = "Neues Datenelement: " + obj_copy.copy[0].destPath
 }
 ```
 
@@ -266,9 +265,9 @@ Den Body kann man mit Json erstellen. Dies kann im js_api.html so aussehen:
 ```js
 body_delete = {
   "path": "Test:Kopiert"
-};
+}
 
-dp_delete(HOST, PORT, PROTOCOL, ENDPOINT, body_delete);
+dp_delete(HOST, PORT, PROTOCOL, ENDPOINT, body_delete)
 ```
 
 Die Rückgabe von dp_delete_rsp_txt:
@@ -289,10 +288,10 @@ Man kann den Code auslesen um zu kontrollieren dass das Datenelement erfolgreich
 
 ```js
     function dp_delete_rsp(response) {
-  let text = response;
-  const obj_delete = JSON.parse(text);
+  let text = response
+  const obj_delete = JSON.parse(text)
 
-  document.getElementById("dp_delete_rsp_txt").innerHTML = "Code: " + obj_delete.delete[0].code;
+  document.getElementById("dp_delete_rsp_txt").innerHTML = "Code: " + obj_delete.delete[0].code
 }
 ```
 
