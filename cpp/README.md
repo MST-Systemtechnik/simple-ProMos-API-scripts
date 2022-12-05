@@ -4,19 +4,19 @@ Für cpp wurde Visual Studio verwendet, da dieser den Compiler bereits installie
 
 Es wird eine Konsolen-App C++ verwendet für dieses Beispiel.
 
-Es wurde die aktuelle Version von CURL heruntergeladen und im Projektordner abgelegt. 
+Folgende Librarys werden benötigt und in den Projektordner abgelegt:
 
-[curl - Download](https://curl.se/download.html)
+- Curl: [curl - Download](https://curl.se/download.html)
 
-Ebenfalls wurde der Restclient-cpp heruntergeladen und im Projektordner abgelegt.
+- Restclient-cpp: [GitHub - mrtazz/restclient-cpp: C++ client for making HTTP/REST requests](https://github.com/mrtazz/restclient-cpp)
 
-[GitHub - mrtazz/restclient-cpp: C++ client for making HTTP/REST requests](https://github.com/mrtazz/restclient-cpp)
+- nlohmann/json: [GitHub - nlohmann/json: JSON for Modern C++](https://github.com/nlohmann/json)
 
 In den Projekteigenschaften müssen folgende Werte angepasst werden (Fett geschrieben):
 
-In den Projekteigenschaften muss man be `VC++-Verzeichnisse` -> `Includeverzeichnisse` die Werte `restclient-cpp\include` und `curl\include` hinzugefügt werden.
+In den Projekteigenschaften muss man be `VC++-Verzeichnisse` -> `Includeverzeichnisse` die Werte `restclient-cpp\include`, `curl\include` und `json-develop\single_include` hinzugefügt werden.
 
-![](img/221125112052.png)
+![](C:\Users\Jakob.Ferber\AppData\Roaming\marktext\images\2022-12-05-14-10-56-image.png)
 
 Und bei Abschnitt `Linker` -> `Eingabe` muss `curl\lib\libcurl.ddl.a;%AdditionalDependencies)` angegeben werden.
 
@@ -26,7 +26,21 @@ Die Datei <Projektordner>\curl\bin\libcurl-x64.dll muss in den Debug-Ordner kopi
 
 ![](img/pasted%20image%200.png)
 
+Die Quelledateien vom RestClient müssen noch ins Projekt eingefügt werden. Es handelt sich um die Dateien:
+
+- connection.cc
+
+- helpers.cc
+
+- restclient.cc
+
+![](C:\Users\Jakob.Ferber\AppData\Roaming\marktext\images\2022-12-05-14-13-38-image.png)
+
+Die Dateien befinden sich im Ordner restclient-cpp\source.
+
 ## Vorbereitung
+
+Die Datei `Struct_API.h` muss in den Projektordner kopiert werden.
 
 Includes und using Keywörter definieren
 
@@ -280,7 +294,6 @@ Man kann den Pfad vom neuen Datenelement auslesen:
 ```cpp
 // Output response
 json j_copy_response = json::parse(responseCopy.body);
-
 std::cout << "Neues Datenelement: " << j_copy_response["copy"][0]["destPath"] << endl;
 ```
 
@@ -327,7 +340,6 @@ Man kann den Code auslesen um zu kontrollieren das Datenelement erfolgreich gel�
 ```cpp
 // Output response
 json j_delete_response = json::parse(responseDelete.body);
-
 std::cout << "Code: " << j_delete_response["delete"][0]["code"] << endl;
 ```
 
