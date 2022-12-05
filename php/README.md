@@ -203,7 +203,7 @@ Man kann den Pfad vom neuen Datenelement auslesen:
 
 ```php
 echo "Neues Datenelement: " . $return_copy["copy"][0]["destPath"];
-echo "<hr>"
+echo "<hr>";
 ```
 
 Im Browser wird beim neuladen folgendes angezeigt:
