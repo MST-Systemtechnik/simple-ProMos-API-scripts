@@ -8,6 +8,12 @@ Es müssen keine Änderungen gemacht werden an der Datei php_api.php.
 
 ## Vorbereitung
 
+Im Projektordner vom DMS muss die IP-Adresse vom Docker Container freigegeben werden. Dazu wird die Datei `C:\PromosNT\proj\<Projekt>\cfg\DMS_JSON_IPS.cfg` angepasst. Unter `[nonSSL_Allowed]` wurde die IP-Adresse `0.0.0.0/0` angegeben.
+
+> **ACHTUNG**
+> 
+> Die IP-Adresse `0.0.0.0/0` steht für jede IP-Adresse. Dies wurde hier für Testzwecke verwendet. 
+
 Es muss ein Projektordner erstellt werden und in diesem müssen die Dateien php_api.php, dockerfile und docker-compose.yaml kopiert werden. Erstelle ein neues Dokument mit dem Namen index.php.
 
 In der Datei muss folgendes eingegeben werden:
