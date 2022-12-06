@@ -288,7 +288,7 @@ println("Code: " + postDeleteReturn.Delete[0].Code)
 Im Terminal wird nun folgendes ausgegeben:
 
 ```shell
-
+code: ok
 ```
 
 ### Tipps und Tricks
