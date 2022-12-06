@@ -80,11 +80,11 @@ Jeder Get-Befehl hat die Namenswerte Tag und Get. Im Get befindet sich dann ein 
 
 Get hat folgende Inhalte:
 
-| Feld  | Beschreibung                            | Typ    | Optional |
-| ----- | --------------------------------------- | ------ | -------- |
-| path  | Pfad vom Datenelement (DMS-Name)        | string | nein     |
-| query | Ein Query-Objekt (Inhalt ist unterhalb) | object | ja       |
-| tag   | ???                                     | any    | ja       |
+| Feld  | Beschreibung                                                      | Typ    | Optional |
+| ----- | ----------------------------------------------------------------- | ------ | -------- |
+| path  | Pfad vom Datenelement (DMS-Name)                                  | string | nein     |
+| query | Ein Query-Objekt (Inhalt ist unterhalb)                           | object | ja       |
+| tag   | Alle Daten, die in der Rückmeldung wiedergegeben werden sollen.   | any    | ja       |
 
 Query hat folgende Inhalte:
 
@@ -93,7 +93,7 @@ Query hat folgende Inhalte:
 | regExPath  | Regulärer Ausdruck (RegEx) vom Pfad. Standard ist leer.        | string | ja       |
 | regExValue | Regulärer Ausdruck (RegEx) vom Wert. Standard ist leer.        | string | ja       |
 | regExStamp | Regulärer Ausdruck (RegEx) vom Zeitstempel. Standard ist leer. | string | ja       |
-| maxDepth   | ???                                                            | number | ja       |
+| maxDepth   | Maximale Tiefe für rekursive Suchpfade. Standard ist 1 (aktueller Pfad). 0 bedeutet keine Einschränkungen, alle Unterpfade werden durchsucht.                                                            | number | ja       |
 
 Beispiel:
 
