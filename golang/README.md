@@ -98,6 +98,8 @@ getBody := &JsonPost_{
     Path: "",
     Query: JsonQuery{
         RegExPath: "^(Test).*$",
+        RegExValue: ".*",
+        RegExStamp: ".*",
         MaxDepth:  0,
     },
 }
