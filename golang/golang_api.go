@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
 	"net/http"
 	"strings"
 )
@@ -123,8 +122,7 @@ func post_cmd(url string, jsonData JsonPost) JsonPost {
 	}
 
 	var postReturn JsonPost
-	respbody, _ := ioutil.ReadAll(resp.Body)
-	json.Unmarshal(respbody, &postReturn)
+	json.NewDecoder(resp.Body).Decode(&postReturn)
 
 	return postReturn
 }
