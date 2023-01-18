@@ -1,7 +1,7 @@
 # Einführung
 
 Für Detaillierte Angaben zum API-Dokument verweisen
-In diesem Dokument werden einfache API Abfragen erstellt. Für mehr Details sollte man die dazugehörige Dokumentation anschauen. ![ProMos DMS JSON Data Exchange](https://www.promosnt.ch/_Resources/Persistent/b/a/3/e/ba3e7f511bb90ddb69e6fb92e45db52496d2f5f5/ProMoS_DMS_JSON_Data_Exchange_en_V1.8.pdf)
+In diesem Dokument werden einfache API Abfragen erstellt. Für mehr Details sollte man die dazugehörige Dokumentation anschauen. [ProMos DMS JSON Data Exchange](https://www.promosnt.ch/_Resources/Persistent/b/a/3/e/ba3e7f511bb90ddb69e6fb92e45db52496d2f5f5/ProMoS_DMS_JSON_Data_Exchange_en_V1.8.pdf)
 
 # Aufbau REST API
 
