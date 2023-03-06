@@ -5,7 +5,7 @@
 <?php
 include 'php_api.php';
 
-define("HOST", "192.168.56.1");
+define("HOST", "10.0.1.217"); // Muss die eigene IP-Adresse sein
 define("PORT", "9020");
 define("ENDPOINT", "json_data");
 define("PROTOCOL", "HTTP");
@@ -28,7 +28,7 @@ echo "<hr>";
 <!--------------- dp_get --------------->
 <?php
 
-$body = '{"path":"","query":{"regExPath":"^(Test).*$","maxDepth":"0"}}';
+$body = '{"path":"","query":{"regExPath":"Test.*","maxDepth":"0"}}';
 $return_get = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, $body);
 
 foreach ($return_get["get"] as $get) {

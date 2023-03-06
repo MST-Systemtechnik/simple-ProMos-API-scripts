@@ -23,7 +23,7 @@ In der Datei muss folgendes eingegeben werden:
 
 include 'php_api.php';
 
-define("HOST", "192.168.56.1");
+define("HOST", "192.168.56.1"); // Muss die eigene IP-Adresse sein
 define("PORT", "9020");
 define("ENDPOINT", "json_data");
 define("PROTOCOL", "HTTP");
@@ -93,7 +93,7 @@ function dp_get($host, $port, $tag, $protocol, $endpoint, $body)
 Den Body kann man mit einem einfachen String erstellen. Dies kann im index.php so aussehen:
 
 ```php
-$body = '{"path":"","query":{"regExPath":"^(Test).*$","maxDepth":"0"}}';
+$body = '{"path":"","query":{"regExPath":"Test.*","maxDepth":"0"}}';
 $return_get = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, $body);
 ```
 
