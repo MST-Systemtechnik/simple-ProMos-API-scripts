@@ -29,7 +29,7 @@ func main() {
 	// Ausgabe:
 	fmt.Println(postSetReturn.Set[0].Code)
 	// Terminal:
-	// Inhalt
+	// ok
 
 	//
 	//
@@ -39,8 +39,10 @@ func main() {
 	getBody := &JsonPost_{
 		Path: "",
 		Query: JsonQuery{
-			RegExPath: "^(Test).*$",
-			MaxDepth:  0,
+			RegExPath:  "Test.*",
+			RegExValue: ".*",
+			RegExStamp: ".*",
+			MaxDepth:   0,
 		},
 	}
 

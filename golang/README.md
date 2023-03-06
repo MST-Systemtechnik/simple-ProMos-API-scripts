@@ -6,6 +6,14 @@ Um mit dieser Anleitung eine API-Abfrage zu machen, muss man sich auf dem gleich
 
 Es müssen keine Änderungen gemacht werden an der Datei golang_api.go sofern man mit dem “package main” arbeitet.
 
+Falls beim Debuggen ein `Build Error` auftritt, kann man diesen umgehen indem man dafür sorgt, dass das `GO111MODULE` ausgeschaltet ist.
+
+Dies kann man im Terminal machen:
+
+```shell
+go env -w GO111MODULE=off
+```
+
 ## Vorbereitung
 
 Es muss ein Projektordner erstellt werden und in diesem muss die Datei golang_api.go kopiert werden und ein neues Dokument erstellt mit dem Namen main.go.
@@ -97,7 +105,7 @@ var postGetReturn JsonPost
 getBody := &JsonPost_{
     Path: "",
     Query: JsonQuery{
-        RegExPath: "^(Test).*$",
+        RegExPath: "Test.*",
         RegExValue: ".*",
         RegExStamp: ".*",
         MaxDepth:  0,
@@ -106,6 +114,8 @@ getBody := &JsonPost_{
 
 postGetReturn = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, *getBody)
 ```
+
+Wenn man keinen Filter für die RegEx-Felder setzten möchte, muss man diese auf `.*` setzten.
 
 Rückgabe von postGetReturn:
 
