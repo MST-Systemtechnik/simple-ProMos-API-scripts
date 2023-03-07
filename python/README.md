@@ -91,7 +91,7 @@ Den Body kann man mit der Klasse JsonGet erstellen. Dies kann im main.py so auss
 getBody = JsonGet(
     path='',
     query=JsonQuery(
-        regExPath='^(Test).*$',
+        regExPath='Test.*',
         maxDepth='0'
         )
     )

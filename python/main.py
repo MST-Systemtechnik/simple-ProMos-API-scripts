@@ -19,7 +19,7 @@ print(responseSet['set'][0]['value'])
 getBody = JsonGet(
     path='', 
     query=JsonQuery(
-        regExPath='^(Test).*$',
+        regExPath='Test.*',
         maxDepth='0'
         )
     )
