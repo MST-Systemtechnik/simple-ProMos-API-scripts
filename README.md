@@ -104,7 +104,7 @@ Beispiel:
         {
             "path": "",
             "query": {
-                "regExPath": "^(Test).*$",
+                "regExPath": "Test.*",
                 "maxDepth": "0"
             }
         }

@@ -60,7 +60,7 @@ int main()
     j_get["get"] = { {
         {"path", "Test"},
         {"query", {
-            {"regExPath", "^(Test).*$"},
+            {"regExPath", "Test.*"},
             {"maxDepth", 0}
         }}
     } };
