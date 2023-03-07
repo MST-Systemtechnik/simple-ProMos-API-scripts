@@ -1,6 +1,6 @@
 # Javascript
 
-Um den Verlauf im Browser anzuzeigen, muss man den Google Chrome Browser im `disable security` öffnen ([Text zum Link erstellen](disable security chrome.txt)).
+Um den Verlauf im Browser anzuzeigen, muss man den Google Chrome Browser im `disable security` öffnen ([Anleitung](https://support.hcltechsw.com/csm?id=kb_article&sysparm_article=KB0088655)).
 
 ## Vorbereitung
 
@@ -93,7 +93,7 @@ Den Body kann man mit Json erstellen. Dies kann im js_api.html so aussehen:
 body_get = {
   "path": "",
   "query": {
-	"regExPath": "^(Test).*$",
+	"regExPath": "Test.*",
 	"maxDepth": "0"
   }
 }
