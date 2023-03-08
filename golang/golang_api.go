@@ -57,11 +57,8 @@ func dp_set(host string, port string, tag string, protocol string, endpoint stri
 	return post_cmd(url, jsonData)
 }
 
-func dp_get(host string, port string, tag string, protocol string, endpoint string, body JsonPost_) JsonPost {
+func dp_get(host string, port string, tag string, protocol string, endpoint string, jsonData JsonPost) JsonPost {
 	var url = strings.ToLower(protocol) + "://" + host + ":" + port + "/" + endpoint
-
-	var jsonData JsonPost
-	jsonData.Get = append(jsonData.Get, body)
 
 	if tag != "" {
 		jsonData.Tag = tag

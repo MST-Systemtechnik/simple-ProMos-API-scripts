@@ -46,7 +46,10 @@ func main() {
 		},
 	}
 
-	postGetReturn = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, *getBody)
+	var jsonData JsonPost
+	jsonData.Get = append(jsonData.Get, *getBody)
+
+	postGetReturn = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, jsonData)
 
 	// Ausgabe:
 	for i := range postGetReturn.Get {
@@ -62,6 +65,53 @@ func main() {
 	// ------------------------------
 	// Path: Test:Datenelement
 	// Value: Inhalt
+	// ------------------------------
+
+	//
+	//
+	//------------- Ausführung "func dp_get 2" -------------//
+	var postGetReturn2 JsonPost
+	var jsonData2 JsonPost
+
+	getBody2 := &JsonPost_{
+		Path: "System:Date:DateLong",
+		Query: JsonQuery{
+			RegExPath:  ".*",
+			RegExValue: ".*",
+			RegExStamp: ".*",
+			MaxDepth:   0,
+		},
+	}
+
+	getBody3 := &JsonPost_{
+		Path: "System:Time:Hours",
+		Query: JsonQuery{
+			RegExPath:  ".*",
+			RegExValue: ".*",
+			RegExStamp: ".*",
+			MaxDepth:   0,
+		},
+	}
+
+	jsonData2.Get = append(jsonData2.Get, *getBody2)
+	jsonData2.Get = append(jsonData2.Get, *getBody3)
+
+	postGetReturn2 = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, jsonData2)
+
+	// Ausgabe:
+	for i := range postGetReturn2.Get {
+		fmt.Print("Path: ")
+		fmt.Println(postGetReturn2.Get[i].Path)
+		fmt.Print("Value: ")
+		fmt.Println(postGetReturn2.Get[i].Value)
+		fmt.Println("------------------------------")
+	}
+
+	// Path: System:Date:DateLong
+	// Value: 08.03.2023
+	// ------------------------------
+	// Path: System:Time:Hours
+	// Value: 7
 	// ------------------------------
 
 	//

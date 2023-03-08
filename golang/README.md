@@ -105,14 +105,17 @@ var postGetReturn JsonPost
 getBody := &JsonPost_{
     Path: "",
     Query: JsonQuery{
-        RegExPath: "Test.*",
+        RegExPath:  "Test.*",
         RegExValue: ".*",
         RegExStamp: ".*",
-        MaxDepth:  0,
+        MaxDepth:   0,
     },
 }
 
-postGetReturn = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, *getBody)
+var jsonData JsonPost
+jsonData.Get = append(jsonData.Get, *getBody)
+
+postGetReturn = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, jsonData)
 ```
 
 Wenn man keinen Filter für die RegEx-Felder setzten möchte, muss man diese auf `.*` setzten.
@@ -163,6 +166,62 @@ Value: <nil>
 Path: Test:Datenelement
 Value: Inhalt
 ------------------------------
+```
+
+### func dp_get zusätzliches Beispiel
+
+Man kann auch direkt einen Pfad angeben. Dies kann im main.go so aussehen:
+```go
+var postGetReturn2 JsonPost
+var jsonData2 JsonPost
+
+getBody2 := &JsonPost_{
+    Path: "System:Date:DateLong",
+	Query: JsonQuery{
+		RegExPath:  ".*",
+		RegExValue: ".*",
+		RegExStamp: ".*",
+		MaxDepth:   0,
+	},
+}
+
+getBody3 := &JsonPost_{
+    Path: "System:Time:Hours",
+    Query: JsonQuery{
+        RegExPath:  ".*",
+        RegExValue: ".*",
+        RegExStamp: ".*",
+        MaxDepth:   0,
+    },
+}
+
+jsonData2.Get = append(jsonData2.Get, *getBody2)
+jsonData2.Get = append(jsonData2.Get, *getBody3)
+
+postGetReturn2 = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, jsonData2)
+```
+
+Mögliche Rückgabe von postGetReturn2:
+```json
+{
+  "tag": "",
+  "get": [
+    {
+      "path": "System:Date:DateLong",
+      "code": "ok",
+      "type": "string",
+      "value": "08.03.2023",
+      "stamp": "2023-03-08T07:07:19,925+01:00"
+    },
+    {
+      "path": "System:Time:Hours",
+      "code": "ok",
+      "type": "int",
+      "value": 8,
+      "stamp": "2023-03-08T08:00:00,037+01:00"
+    }
+  ]
+}
 ```
 
 ### func dp_rename
