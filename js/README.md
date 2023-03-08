@@ -152,6 +152,34 @@ Im Browser wird beim neuladen folgendes angezeigt:
 
 ![](img/221125145924.png)
 
+### function dp_get zusätzliches Beispiel
+
+Man kann auch direkt einen Pfad angeben. Dies kann im js_api.html so aussehen:
+
+```js
+body_get2 = {
+  "path": "System:Date:DateLong"
+}
+
+dp_get2(HOST, PORT, "", PROTOCOL, ENDPOINT, body_get2);
+```
+
+Mögliche Rückgabe:
+```json
+{
+  "tag": "",
+  "get": [
+    {
+      "path": "System:Date:DateLong",
+      "code": "ok",
+      "type": "string",
+      "value": "08.03.2023",
+      "stamp": "2023-03-08T07:07:19,925+01:00"
+    }
+  ]
+}
+```
+
 ### function dp_rename
 
 ```js

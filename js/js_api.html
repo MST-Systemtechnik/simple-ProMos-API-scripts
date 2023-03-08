@@ -49,8 +49,8 @@
     dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, body_get);
 
     function dp_get_rsp(response) {
-      let text = response;
-      const obj_get = JSON.parse(text);
+      let text2 = response;
+      const obj_get = JSON.parse(text2);
 
       var str_get = "";
       for (var i = 0; i < obj_get.get.length; i++) {
@@ -66,6 +66,30 @@
   <hr>
 
 
+
+  <script>
+    body_get2 = {
+      "path": "System:Date:DateLong"
+    }
+
+    dp_get2(HOST, PORT, "", PROTOCOL, ENDPOINT, body_get2);
+
+    function dp_get_rsp2(response2) {
+      let text2 = response2;
+      const obj_get2 = JSON.parse(text2);
+
+      var str_get2 = "";
+      for (var i = 0; i < obj_get2.get.length; i++) {
+        str_get2 += "Path: " + obj_get2.get[i].path + "<br>";
+        str_get2 += "Value: " + obj_get2.get[i].value + "<br>";
+        str_get2 += "------------------------------<br>"
+      }
+
+      document.getElementById("dp_get_rsp_text2").innerHTML = str_get2;
+    }
+  </script>
+  <p id="dp_get_rsp_text2"></p>
+  <hr>
 
 
   <script>
