@@ -39,6 +39,20 @@ foreach ($return_get["get"] as $get) {
 echo "<hr>";
 ?>
 
+<!--------------- dp_get 2 --------------->
+<?php
+
+$body = '{"path":"System:Date:DateLong"}, {"path":"System:Time:Hours"}';
+$return_get = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, $body);
+
+foreach ($return_get["get"] as $get) {
+    echo "Path: " . json_encode($get["path"]) . "<br>";
+    echo "Value: " . json_encode($get["value"]) . "<br>";
+    echo "------------------------------<br>";
+}
+echo "<hr>";
+?>
+
 
 <!--------------- dp_rename --------------->
 <?php

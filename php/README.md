@@ -138,6 +138,39 @@ Im Browser wird beim neuladen folgendes angezeigt:
 
 ![](img/pasted%20image%200%20(2).png)
 
+### function dp_get zusätzliches Beispiel
+
+Man kann auch direkt einen Pfad angeben. Dies kann im index.php so aussehen:
+
+```php
+$body = '{"path":"System:Date:DateLong"}, {"path":"System:Time:Hours"}';
+$return_get = dp_get(HOST, PORT, "", PROTOCOL, ENDPOINT, $body);
+```
+
+Mögliche Rückgabe von $return_get:
+
+```php
+{
+  "tag": "",
+  "get": [
+    {
+      "path": "System:Date:DateLong",
+      "code": "ok",
+      "type": "string",
+      "value": "08.03.2023",
+      "stamp": "2023-03-08T07:07:19,925+01:00"
+    },
+    {
+      "path": "System:Time:Hours",
+      "code": "ok",
+      "type": "int",
+      "value": 8,
+      "stamp": "2023-03-08T08:00:00,037+01:00"
+    }
+  ]
+}
+```
+
 ### function dp_rename
 
 ```php
