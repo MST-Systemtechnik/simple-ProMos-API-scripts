@@ -145,9 +145,9 @@ json j_get;
 
 // Json
 j_get["get"] = { {
-    {"path", "Test"},
+    {"path", ""},
     {"query", {
-        {"regExPath", "^(Test).*$"},
+        {"regExPath", "Test.*"},
         {"maxDepth", 0}
     }}
 } };
@@ -204,6 +204,41 @@ Value: null
 Path: "Test:Datenelement"
 Value: "Inhalt"
 ------------------------------
+```
+
+# Get zusätzliches Beispiel
+
+Man kann auch direkt einen Pfad angeben. Dies kann so aussehen:
+
+```cpp
+// Get2
+json j_get2;
+
+// Json
+j_get2["get"] = { {
+    {"path", "System:Date:DateLong"}
+} };
+
+// Post
+string s_get2 = j_get2.dump();
+RestClient::Response responseGet2 = conn->post("/json_data", s_get2);
+```
+
+Mögliche Rückgabe von responseGet2:
+
+```php
+{
+  "tag": "",
+  "get": [
+    {
+      "path": "System:Date:DateLong",
+      "code": "ok",
+      "type": "string",
+      "value": "08.03.2023",
+      "stamp": "2023-03-08T07:07:19,925+01:00"
+    }
+  ]
+}
 ```
 
 # Rename

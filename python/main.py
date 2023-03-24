@@ -34,6 +34,25 @@ for response in responseGet['get']:
         print('Value: None')
     print('------------------------------')
 
+#--------------- dp_get 2 ---------------#
+getBody2 = JsonGet(
+    path='System:Date:DateLong',
+    query=JsonQuery(
+        regExPath='.*',
+        maxDepth='0'
+        )
+    )
+
+responseGet2 = dp_get(data_points=getBody2.jsonStr, host=HOST, port=PORT, protocol=PROTOCOL, endpoint=ENDPOINT, tag="")
+
+for response in responseGet2['get']:
+    print('Path: ' + response['path'])
+    if response['value'] != None:
+        print('Value: ' + response['value'])
+    else:
+        print('Value: None')
+    print('------------------------------')
+
 #--------------- dp_rename ---------------#
 renameBody = JsonRename(
     path='Test:Datenelement',
