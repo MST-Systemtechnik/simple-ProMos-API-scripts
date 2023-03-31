@@ -5,7 +5,7 @@
 <?php
 include 'php_api.php';
 
-define("HOST", "10.0.1.217"); // Muss die eigene IP-Adresse sein
+define("HOST", "192.168.30.1"); // Muss die eigene IP-Adresse sein
 define("PORT", "9020");
 define("ENDPOINT", "json_data");
 define("PROTOCOL", "HTTP");

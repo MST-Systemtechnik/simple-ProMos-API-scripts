@@ -147,6 +147,38 @@ Value: Inhalt
 ------------------------------
 ```
 
+### func dp_get zusätzliches Beispiel
+
+Man kann auch direkt einen Pfad angeben. Dies kann im main.py so aussehen:
+
+```python
+getBody2 = JsonGet(
+    path='System:Date:DateLong',
+    query=JsonQuery(
+        regExPath='.*',
+        maxDepth='0'
+        )
+    )
+
+responseGet2 = dp_get(data_points=getBody2.jsonStr, host=HOST, port=PORT, protocol=PROTOCOL, endpoint=ENDPOINT, tag="")
+```
+
+Möglche Rückgabe von responseGet2:
+```python
+{
+  "tag": "",
+  "get": [
+    {
+      "path": "System:Date:DateLong",
+      "code": "ok",
+      "type": "string",
+      "value": "08.03.2023",
+      "stamp": "2023-03-08T07:07:19,925+01:00"
+    }
+  ]
+}
+```
+
 ### def dp_rename
 
 ```python
